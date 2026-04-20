@@ -1,22 +1,29 @@
 
 let lengthInput = document.getElementById('LengthInput');
 let widthInput = document.getElementById('WidthInput');
-let startInput = document.getElementById('StartInput');
-let targetInput = document.getElementById('TargetInput');
+let startXInput = document.getElementById('StartXInput');
+let startYInput = document.getElementById('StartYInput');
+let targetXInput = document.getElementById('TargetXInput');
+let targetYInput = document.getElementById('TargetYInput');
 let submitButton = document.getElementById('submitButton');
 let table = document.getElementById('table');
-let value = parseInt(lengthInput.value);
+let lengthValue = parseInt(lengthInput.value);
 let widthValue = parseInt(widthInput.value);
-let startValue = parseInt(startInput.value);
-let targetValue = parseInt(targetInput.value);
+let startXValue = Number(startXInput.value);
+let startYValue = Number(startYInput.value);
+let targetXValue = parseInt(targetXInput.value);
+let targetYValue = parseInt(targetYInput.value);
 
 submitButton.addEventListener('click', function() {
 
-    value = parseInt(lengthInput.value);
+    lengthValue = parseInt(lengthInput.value);
     widthValue = parseInt(widthInput.value);
-    createGrid(value, widthValue);
+    createGrid(lengthValue, widthValue);
     displayTable(mainArray);
     console.log(mainArray);
+    colorStartCell(startXValue.value, startYValue.value);
+    console.log(startXValue.value, startYValue.value);
+    console.log(lengthInput.value, widthInput.value);
 });
 
 function createGrid(gridRows, gridCols) {
@@ -45,8 +52,10 @@ function displayTable(array) {
         table.appendChild(row);
     }
 }
-
-function highlightStart(startValue) {
-    let highlighted = document.
+function colorStartCell(startX, startY) {
+    console.log(startX, startY);
 }
+
+    
+
 //function bfs(start, target) {
