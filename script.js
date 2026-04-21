@@ -84,6 +84,21 @@ function bfs(startX, startY, targetX, targetY) {
             let neighbor = neighbors[i];
             }
         }
+    function getNeighbors(x, y) {
+        let neighbors = [];
+        if (x > 0) {
+            neighbors.push([x - 1, y]);
+        }
+        if (x < mainArray.length - 1) {
+            neighbors.push([x + 1, y]);
+        }
     }
-    
+        if (y > 0) {
+            neighbors.push([x, y - 1]);
+        }
+        if (y < mainArray[0].length - 1) {
+            neighbors.push([x, y + 1]);
+        }
+        return neighbors;
+    }
 
