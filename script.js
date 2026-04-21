@@ -7,23 +7,24 @@ let targetXInput = document.getElementById('TargetXInput');
 let targetYInput = document.getElementById('TargetYInput');
 let submitButton = document.getElementById('submitButton');
 let table = document.getElementById('table');
-let lengthValue = parseInt(lengthInput.value);
-let widthValue = parseInt(widthInput.value);
-let startXValue = Number(startXInput.value);
-let startYValue = Number(startYInput.value);
-let targetXValue = parseInt(targetXInput.value);
-let targetYValue = parseInt(targetYInput.value);
+
 
 submitButton.addEventListener('click', function() {
 
-    lengthValue = parseInt(lengthInput.value);
-    widthValue = parseInt(widthInput.value);
+    lengthValue = Number(lengthInput.value);
+    widthValue = Number(widthInput.value);
+    startXValue = Number(startXInput.value);
+    startYValue = Number(startYInput.value);
+    targetXValue = Number(targetXInput.value);
+    targetYValue = Number(targetYInput.value);
     createGrid(lengthValue, widthValue);
     displayTable(mainArray);
     console.log(mainArray);
-    colorStartCell(startXValue.value, startYValue.value);
-    console.log(startXValue.value, startYValue.value);
-    console.log(lengthInput.value, widthInput.value);
+    colorStartCell(startXValue, startYValue);
+    colorTargetCell(targetXValue, targetYValue);
+    console.log(startXValue, startYValue);
+    console.log(lengthValue, widthValue);
+    bfs(startXValue, startYValue, targetXValue, targetYValue);
 });
 
 function createGrid(gridRows, gridCols) {
@@ -53,9 +54,36 @@ function displayTable(array) {
     }
 }
 function colorStartCell(startX, startY) {
-    console.log(startX, startY);
+    let cell = table.rows[startX].cells[startY];
+    cell.style.backgroundColor = 'green';
+}
+
+function colorTargetCell(targetX, targetY) {
+    let cell = table.rows[targetX].cells[targetY];
+    cell.style.backgroundColor = 'red';
 }
 
     
 
-//function bfs(start, target) {
+function bfs(startX, startY, targetX, targetY) {
+    let queue = [];
+    let visited = [];
+    queue.push([startX, startY]);
+    visited.push([startX, startY]);
+
+    while (queue.length > 0) {
+        console.log(queue);
+        if (queue[0][0] === targetX && queue[0][1] === targetY) {
+            console.log('Target found');
+            break;
+        }
+        let current = queue.shift();
+        let neighbors = getNeighbors(current[0], current[1]);
+        current.style.backgroundColor = 'yellow';
+        for (let i = 0; i < neighbors.length; i++) {
+            let neighbor = neighbors[i];
+            }
+        }
+    }
+    
+
