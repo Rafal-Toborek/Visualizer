@@ -7,6 +7,21 @@ let targetXInput = document.getElementById('TargetXInput');
 let targetYInput = document.getElementById('TargetYInput');
 let submitButton = document.getElementById('submitButton');
 let table = document.getElementById('table');
+let wallxInput = document.getElementById('WallxInput');
+let wallyInput = document.getElementById('WallyInput');
+let addWallsButton = document.getElementById('addWallsButton');
+let wallInput = document.getElementById('wallInput');
+
+addWallsButton.addEventListener('click', addingWallInput());
+
+function addingWallInput() {
+    let wallXInput = document.createElement('input');
+    wallXInput.setAttribute('type', 'text');
+    wallXInput.setAttribute('id', 'WallxInput');
+    let wallYInput = document.createElement('input');
+    wallYInput.setAttribute('type', 'text');
+    wallYInput.setAttribute('id', 'WallyInput');
+    };
 
 
 submitButton.addEventListener('click', function() {
@@ -86,9 +101,10 @@ function bfs(startX, startY, targetX, targetY) {
 
     let neighbors = getNeighbors(x, y);
     for (let neighbor of neighbors) {
-        let nx = neighbor[0];
+        let nx = neighbor[0];        
         let ny = neighbor[1];
         let key = `${nx},${ny}`;
+        console.log(key);
         if (!visited.has(key)) {
             visited.add(key);
             queue.push(neighbor);
@@ -96,7 +112,10 @@ function bfs(startX, startY, targetX, targetY) {
             cell.style.backgroundColor = 'lightyellow';
         }
     }
+    function addingWalls() {}
+    }
 }
+    
     function getNeighbors(x, y) {
         let neighbors = [];
         if (x > 0) {
@@ -113,4 +132,4 @@ function bfs(startX, startY, targetX, targetY) {
         }
         return neighbors;
     }
-}
+
